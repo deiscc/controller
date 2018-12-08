@@ -96,8 +96,8 @@ class AuditedModel(models.Model):
         # fetch setvice definition with minimum structure
         svc = self._fetch_service_config(app, svc_name)
 
-        # always assume a .deis.io/ ending
-        component = "%s.deis.io/" % component
+        # always assume a .deis.cc/ ending
+        component = "%s.deis.cc/" % component
 
         # Filter to only include values for the component and strip component out of it
         # Processes dots into a nested structure
@@ -111,8 +111,8 @@ class AuditedModel(models.Model):
         # fetch setvice definition with minimum structure
         svc = self._fetch_service_config(app, svc_name)
 
-        # always assume a .deis.io ending
-        component = "%s.deis.io/" % component
+        # always assume a .deis.cc ending
+        component = "%s.deis.cc/" % component
 
         # add component to data and flatten
         data = {"%s%s" % (component, key): value for key, value in list(data.items()) if value}

@@ -9,7 +9,7 @@ class TestAdminPerms(DeisTestCase):
     def test_first_signup(self):
         # register a first user
         username, password = 'firstuser', 'password'
-        email = 'autotest@deis.io'
+        email = 'autotest@deis.cc'
         submit = {
             'username': username,
             'password': password,
@@ -22,7 +22,7 @@ class TestAdminPerms(DeisTestCase):
 
         # register a second user
         username, password = 'seconduser', 'password'
-        email = 'autotest@deis.io'
+        email = 'autotest@deis.cc'
         submit = {
             'username': username,
             'password': password,
@@ -37,7 +37,7 @@ class TestAdminPerms(DeisTestCase):
     def test_first_signup_admin_only(self):
         # register a first user
         username, password = 'firstuser', 'password'
-        email = 'autotest@deis.io'
+        email = 'autotest@deis.cc'
         submit = {
             'username': username,
             'password': password,
@@ -52,7 +52,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'firstuser',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)
@@ -73,7 +73,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'seconduser',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)
@@ -92,7 +92,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'first',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)
@@ -102,7 +102,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'second',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)
@@ -126,7 +126,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'first',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)
@@ -136,7 +136,7 @@ class TestAdminPerms(DeisTestCase):
         submit = {
             'username': 'second.lastname',
             'password': 'password',
-            'email': 'autotest@deis.io',
+            'email': 'autotest@deis.cc',
         }
         url = '/v2/auth/register'
         response = self.client.post(url, submit)

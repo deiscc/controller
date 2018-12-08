@@ -886,7 +886,7 @@ class App(UuidAuditedModel):
         old_service = service.copy()  # in case anything fails for rollback
 
         try:
-            service['metadata']['annotations']['router.deis.io/maintenance'] = str(mode).lower()
+            service['metadata']['annotations']['router.deis.cc/maintenance'] = str(mode).lower()
             self._scheduler.svc.update(self.id, self.id, data=service)
         except KubeException as e:
             self._scheduler.svc.update(self.id, self.id, data=old_service)
@@ -904,7 +904,7 @@ class App(UuidAuditedModel):
         old_service = service.copy()  # in case anything fails for rollback
 
         try:
-            service['metadata']['labels']['router.deis.io/routable'] = str(routable).lower()
+            service['metadata']['labels']['router.deis.cc/routable'] = str(routable).lower()
             self._scheduler.svc.update(self.id, self.id, data=service)
         except KubeException as e:
             self._scheduler.svc.update(self.id, self.id, data=old_service)
@@ -919,14 +919,14 @@ class App(UuidAuditedModel):
             # Update service information
             for key, value in annotations.items():
                 if value is not None:
-                    service['metadata']['annotations']['router.deis.io/%s' % key] = str(value)
+                    service['metadata']['annotations']['router.deis.cc/%s' % key] = str(value)
                 else:
-                    service['metadata']['annotations'].pop('router.deis.io/%s' % key, None)
+                    service['metadata']['annotations'].pop('router.deis.cc/%s' % key, None)
             if routable:
-                service['metadata']['labels']['router.deis.io/routable'] = 'true'
+                service['metadata']['labels']['router.deis.cc/routable'] = 'true'
             else:
                 # delete the annotation
-                service['metadata']['labels'].pop('router.deis.io/routable', None)
+                service['metadata']['labels'].pop('router.deis.cc/routable', None)
 
             # Set app type selector
             service['spec']['selector']['type'] = app_type
@@ -953,9 +953,9 @@ class App(UuidAuditedModel):
         try:
             if whitelist:
                 addresses = ",".join(address for address in whitelist)
-                service['metadata']['annotations']['router.deis.io/whitelist'] = addresses
-            elif 'router.deis.io/whitelist' in service['metadata']['annotations']:
-                service['metadata']['annotations'].pop('router.deis.io/whitelist', None)
+                service['metadata']['annotations']['router.deis.cc/whitelist'] = addresses
+            elif 'router.deis.cc/whitelist' in service['metadata']['annotations']:
+                service['metadata']['annotations'].pop('router.deis.cc/whitelist', None)
             else:
                 return
             self._scheduler.svc.update(self.id, self.id, data=service)
@@ -1085,7 +1085,7 @@ class App(UuidAuditedModel):
         image_pull_secret_name = self.image_pull_secret(self.id, config.registry, release.image)
 
         # only web / cmd are routable
-        # http://docs.deis.io/en/latest/using_deis/process-types/#web-vs-cmd-process-types
+        # http://docs.deis.cc/en/latest/using_deis/process-types/#web-vs-cmd-process-types
         routable = True if process_type in ['web', 'cmd'] and app_settings.routable else False
 
         healthcheck = config.get_healthcheck().get(process_type, {})

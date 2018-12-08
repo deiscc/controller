@@ -276,7 +276,7 @@ class TestAppSettings(DeisTransactionTestCase):
         base_labels = {
             'label':
                 {
-                    'git_repo': 'https://github.com/deisthree/controller',
+                    'git_repo': 'https://github.com/deiscc/controller',
                     'team': 'frontend',
                     'empty': ''
                 }

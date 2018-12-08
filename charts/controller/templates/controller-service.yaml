@@ -4,11 +4,11 @@ metadata:
   name: deis-controller
   labels:
     heritage: deis
-    router.deis.io/routable: "true"
+    router.deis.cc/routable: "true"
   annotations:
-    router.deis.io/domains: deis
-    router.deis.io/connectTimeout: "10"
-    router.deis.io/tcpTimeout: "1200"
+    router.deis.cc/domains: deis
+    router.deis.cc/connectTimeout: "10"
+    router.deis.cc/tcpTimeout: "1200"
 spec:
   ports:
     - name: http

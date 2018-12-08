@@ -962,7 +962,7 @@ class MockSchedulerClient(KubeHTTPClient):
                     "labels": {
                         "environ": "dev",
                         "rack": "1",
-                        "deis.com/fun": "yes",
+                        "deis.cc/fun": "yes",
                         "kubernetes.io/hostname": "172.17.8.100",
                         "is.valid": "is-also_valid",
                         "host.the-name.com/is.valid": "valid",

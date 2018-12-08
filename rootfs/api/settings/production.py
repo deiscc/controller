@@ -266,7 +266,7 @@ EXPERIMENTAL_NATIVE_INGRESS = bool(strtobool(
 EXPERIMENTAL_NATIVE_INGRESS_HOSTNAME = os.environ.get('EXPERIMENTAL_NATIVE_INGRESS_HOSTNAME', '')
 
 # k8s image policies
-SLUGRUNNER_IMAGE = os.environ.get('SLUGRUNNER_IMAGE_NAME', 'quay.io/deisci/slugrunner:canary')  # noqa
+SLUGRUNNER_IMAGE = os.environ.get('SLUGRUNNER_IMAGE_NAME', 'quay.io/deiscc/slugrunner:canary')  # noqa
 IMAGE_PULL_POLICY = os.environ.get('IMAGE_PULL_POLICY', "IfNotPresent")  # noqa
 
 # True, true, yes, y and more evaluate to True

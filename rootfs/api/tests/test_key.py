@@ -164,11 +164,11 @@ class KeyTest(DeisTestCase):
                 'aRb34fhtrnJS70XeGF0RhXE5Qea5eh7DBbeLxPfSYd8rfHgzMSb/wmx3h2vm'
                 'HdQGho20pfJktNu7DxeVkTHn9REMUphf85su7slTgTlWKq++3fASE8PdmFGz'
                 'b6PkOR4c+LS5WWXd2oM6HyBQBxxiwXbA2lSgQxOdgDiM2FzT0GVSFMUklkUH'
-                'MdsaG6/HJDw9QckTS0vN autotest@deis.io'}
+                'MdsaG6/HJDw9QckTS0vN autotest@deis.cc'}
         response = self.client.post(url, body)
         self.assertEqual(response.status_code, 201, response.data)
         key = Key.objects.get(uuid=response.data['uuid'])
-        self.assertEqual(str(key), 'ssh-rsa AAAAB3NzaC.../HJDw9QckTS0vN autotest@deis.io')
+        self.assertEqual(str(key), 'ssh-rsa AAAAB3NzaC.../HJDw9QckTS0vN autotest@deis.cc')
 
     def test_rsa_key_fingerprint(self):
         fp = fingerprint(RSA_PUBKEY)

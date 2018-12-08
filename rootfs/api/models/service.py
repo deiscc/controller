@@ -94,7 +94,7 @@ class Service(AuditedModel):
         old_service = service.copy()  # in case anything fails for rollback
 
         try:
-            service['metadata']['annotations']['router.deis.io/maintenance'] = str(mode).lower()
+            service['metadata']['annotations']['router.deis.cc/maintenance'] = str(mode).lower()
             self._scheduler.svc.update(namespace, svc_name, data=service)
         except KubeException as e:
             self._scheduler.svc.update(namespace, svc_name, data=old_service)
@@ -126,14 +126,14 @@ class Service(AuditedModel):
             # Update service information
             for key, value in annotations.items():
                 if value is not None:
-                    service['metadata']['annotations']['router.deis.io/%s' % key] = str(value)
+                    service['metadata']['annotations']['router.deis.cc/%s' % key] = str(value)
                 else:
-                    service['metadata']['annotations'].pop('router.deis.io/%s' % key, None)
+                    service['metadata']['annotations'].pop('router.deis.cc/%s' % key, None)
             if routable:
-                service['metadata']['labels']['router.deis.io/routable'] = 'true'
+                service['metadata']['labels']['router.deis.cc/routable'] = 'true'
             else:
                 # delete the annotation
-                service['metadata']['labels'].pop('router.deis.io/routable', None)
+                service['metadata']['labels'].pop('router.deis.cc/routable', None)
 
             # Set app type selector
             service['spec']['selector']['type'] = app_type
